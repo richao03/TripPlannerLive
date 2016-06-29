@@ -61,3 +61,4 @@ $(function initializeMap (){
   drawMarker('activity', [40.716291, -73.995315]);
 
 });
+
