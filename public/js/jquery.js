@@ -25,10 +25,6 @@ $('#hotelAdd').on('click', function (){
 $('#restaurantAdd').on('click',  function (){
   $('#restaurantItinerary').append("<span class='title'>"+ $('#restaurant-choices').val() +"<button class='btn btn-xs btn-danger remove btn-circle' id='removebtn'>x</button></span>")
   
-  // console.log(this);
-  // console.log(Array.from($("#restaurantItinerary").children()).indexOf(this));
-
-  // console.log($.inArray(this, $("#restaurantItinerary").children()));
 })
 
 
@@ -38,15 +34,18 @@ $('#activityAdd').on('click', function (){
 })
 
 
+$("#day-add").on("click", function(){
+	var number = Number($(this).prev()[0].textContent) + 1;
+	console.log($(this).prev());
+	$(this).parent().append('<button class="btn btn-circle day-btn">'+number+'</button>');
+	$(this).parent().append(this);
 
+})
 
 })
 
 $(document).on("click", "#removebtn", function(){
 
 	$(this).parent().remove();
-	// console.dir(this);
-	// console.log(index);
-	// console.log("clicked");
-
+	
 })
