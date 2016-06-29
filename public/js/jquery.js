@@ -24,7 +24,7 @@ $('#hotelAdd').on('click', function (){
 
 $('#restaurantAdd').on('click',  function (){
   $('#restaurantItinerary').append("<span class='title'>"+ $('#restaurant-choices').val() +"<button class='btn btn-xs btn-danger remove btn-circle' id='removebtn'>x</button></span>")
-  
+
 })
 
 
@@ -35,17 +35,29 @@ $('#activityAdd').on('click', function (){
 
 
 $("#day-add").on("click", function(){
-	var number = Number($(this).prev()[0].textContent) + 1;
-	console.log($(this).prev());
-	$(this).parent().append('<button class="btn btn-circle day-btn">'+number+'</button>');
-	$(this).parent().append(this);
+    var number = 0;
+    if($(this).prev()[0] === undefined) {
+        number += 1;
+    }else{
+        number = Number($(this).prev()[0].textContent) + 1;
+    }
 
+
+    $(this).parent().append('<button class="btn btn-circle day-btn anyday" id="+number+"  >'+number+'</button>');
+    $(this).parent().append(this);
 })
+
 
 })
 
 $(document).on("click", "#removebtn", function(){
 
 	$(this).parent().remove();
-	
+
+})
+
+$(document).on('click', '.anyday', function(){
+  $('#something').replaceWith('<span id="something"> Day ' + $(this)[0].textContent +'</span>')
+  $('.anyday').not(this).removeClass('current-day');
+  $(this).toggleClass('current-day')
 })
